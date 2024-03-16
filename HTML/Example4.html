@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script text="javascript/text" src="../Javascript/JavascriptEx_2.js"></script>
+</head>
+<body>
+    <p id="p1" onclick="MakeBlue()" >
+        Paraghrph 1
+    </p>
+    <p id="p2">
+        Paragrah 2
+    </p>
+    <p id="p3">
+        Paragrah 3
+    </p>
+    <div id = "mydiv">
+        <label>
+            Insert Age
+        </label>
+        <input type="number" onclick="showError()" name="Name" id="ageInput" placeholder="Age"/>
+    </div>
+    <div id ="calc">
+        <label>
+            Iput 1
+        </label>
+        <input type="number" name="Name" id="input1" placeholder="Input 1"/>
+        <label>
+            Input 2
+        </label>
+        <input type="number" name="Name" id="input2" placeholder="Input 2"/>
+        <label>Choose Action</label>
+        <select id = "action" name="action"> Choose Action
+            <option value="multiply">Multiply</option>
+            <option value="value2">Sum</option>
+            <option value="value3">Divide</option>
+            <option value="value3">Substract</option>
+        </select>
+        <button type="submit" onclick="CalculateSum()"> CalculateSum</button>
+    </div>
+</body>
+</html>
