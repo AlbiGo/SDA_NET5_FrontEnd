@@ -1,0 +1,27 @@
+p
+{
+    color: red;
+}
+
+.bluePr
+{
+    color: blue;
+}
+
+#pr4
+{
+    color: purple;
+}
+
+
+
+div{
+    margin: auto;
+    border-radius: 8px;
+    max-width: 400px;
+    min-width: 100px;
+    min-height: 400px;
+    padding: auto;
+    text-align: center;
+    box-shadow: 3px 3px 5px 3px gray;
+}
