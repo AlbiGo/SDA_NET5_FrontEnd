@@ -4,45 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forms</title>
+    <style>
+        div
+        {
+            margin: auto;
+            max-width: 400px;
+            max-height: 500px;
+            text-align: center;
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <form>
+        <form id = "id-form" onsubmit="return false">
             <label>Contact Information form</label>
             <hr>
             <label>Name</label>
-            <input type="text" name="Name" placeholder="Enter name"/>
+            <input required="true" ="text" id = "id-name" name="Name" placeholder="Enter name"/>
             <hr>
             <label>Last Name</label>
-            <input type="text" name="Name" placeholder="Enter last Name"/>
+            <input type="text" required="true" id = "id-lastName" name="Lastname" placeholder="Enter last Name"/>
             <hr>
             <label>Age</label>
-            <input type="number" min="0" value="100" name="Name" placeholder="Enter age"/>
+            <input type="number" required="true" min="0" id = "id-age" value="100" name="Name" placeholder="Enter age"/>
             <hr>
             <label>Registration Date</label>
-            <input type="date" name="Name" placeholder="Enter registration date"/>
+            <input type="date" required="true" name="Name" id = "id-date" placeholder="Enter registration date"/>
             <hr>
             <label>Sex</label>
-            <input type="radio" name="sex" value="female" /> Female
-            <input type="radio" name="sex" value="male" /> Male   
-            <input type="radio" name="sex" value="male" /> Other                     
+            <input type="radio" required="true" name="sex" id = "id-male" value="female" /> Female
+            <input type="radio" required="true" name="sex" id = "id-female" value="male" /> Male   
+            <input type="radio" required="true" name="sex" id = "id-other" value="male" /> Other                     
             <hr>
             <label>Choose Courses</label>
-            <select name="city"> Choose Courses
-                <option value="value1">.NET</option>
-                <option value="value2">Java</option>
-                <option value="value3">Python</option>
+            <select required="true" id ="id-course" name="city"> Choose Courses
+                <option value="NET">.NET</option>
+                <option value="JAVA">Java</option>
+                <option value="Python">Python</option>
                </select>
             <hr>
-            <input type="checkbox" name="accept" /> I confirm that I accept to register on this course
+            <input type="checkbox" id="id-checkbox" name="accept" /> I confirm that I accept to register on this course
             <hr>
-            <input type="submit" value="Register" name="accept"/>
-            <hr>
-            <button type="submit" value="Register" name="accept">Register </button>
+            <button type="submit" onclick="Register()" value="Register" name="accept">Register </button>
         </form>
     </div>
     <script type="text/javascript">
+
         console.log("Example message displayed in the console");
+
+        //Create an object with values from user input and print
+        function Register()
+        {
+            //Create empty contact object
+            var contact = 
+            {
+                Name : "",
+                LastName : "",
+                Age : 0,
+                RegistrationDate : "",
+                Gender : "",
+                Course : ""
+            }
+
+            contact.Name = document.getElementById("id-name").value;
+            contact.LastName = document.getElementById("id-lastName").value;
+            contact.Age = document.getElementById("id-age").value;
+            contact.RegistrationDate = document.getElementById("id-date").value;
+
+            if (document.getElementById("id-male").checked == true)
+            {
+                contact.Gender = document.getElementById("id-male").value;
+            }
+            if (document.getElementById("id-female").checked == true)
+            {
+                contact.Gender = document.getElementById("id-female").value;
+            }
+            if (document.getElementById("id-other").checked == true)
+            {
+                contact.Gender = document.getElementById("id-other").value;
+            }
+
+            contact.Course = document.getElementById("id-course").value;
+            debugger;
+            if (document.getElementById("id-checkbox").checked == false)
+            {
+                console.log("false");
+                let parent = document.getElementById("id-form"); 
+                
+                let paragrafErrorMessageChild = document.createElement("p");
+                
+                paragrafErrorMessageChild.setAttribute("id", "id-errorMsg");
+                parent.appendChild(paragrafErrorMessageChild);
+                
+                document.getElementById("id-errorMsg").style.display = "block";
+                document.getElementById("id-errorMsg").innerText = "Please agree to terms and conditions";
+                document.getElementById("id-errorMsg").style.color = "red";
+            }
+
+            console.log("Contact " + contact.Name + "   " + contact.LastName + "   " + contact.Age
+            + "   " + contact.RegistrationDate + "   " + contact.Gender + "   " + contact.Course);
+        }
+        
     </script>
 </body>
 </html>

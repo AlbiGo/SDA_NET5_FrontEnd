@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Menyra e pare per te inkluduar javascript -->
+    <!-- <script type="javascript/text" src="../Javascript/Javascript_Ex_3.js"></script> -->
+</head>
+<body>
+    <h3 id="id-h3">This is a heading </h3>
+    <input id = "id-input-1" onchange="ShowAgeErrorMessage()" type="number" placeholder="Age">
+    <ul id = "ul-1">
+        <li>
+            List item 1
+        </li>
+        <li>
+            List item 2
+        </li>
+    </ul>
+    <hr>
+    <button type="submit" onmouseover="ShowAlert()">Alert me</button>
+    <!-- Menyre e dyte -->
+    <script>
+        console.log("Test");
+        
+        var someVariable = "test";
+
+        function AddNumbers(number1 , number2)
+        {
+            let t = 1;
+            return number1 + number2;
+        }
+
+        let result = AddNumbers("1", "5");
+        
+        console.log(result);
+        
+        const person = {
+        FirstName : "John",
+        LastName : "Doe",
+        Birthday : "12/12/1998",
+        Age : 12
+        };
+
+        console.log(person.FirstName);
+        console.log(person.LastName);
+        console.log(person["Birthday"]);
+
+        console.log(person);
+
+        //Ndryshojme elementet
+        console.log(document.getElementById("id-h3").innerText)
+        document.getElementById("id-h3").innerText = "New Heading";
+        document.getElementById("id-h3").style.color = "red";
+
+        //Japim vlere
+        console.log(document.getElementById("id-input-1"));
+        //document.getElementById("id-input-1").value = 4;
+
+        //Shto nje list item
+        AddListItem();
+        function AddListItem()
+        {
+            let parent = document.getElementById("ul-1");
+            let child = document.createElement("li");
+            child.setAttribute("id", "li-3");
+            parent.appendChild(child);
+            document.getElementById("li-3").innerText = "List item 3";
+        }
+
+        function ShowAlert()
+        {
+            alert("This is an alert");
+        }
+
+        //Task Krijoni nje input qe merr moshen si input
+        //Kur useri te klikoje/largoje mousin(onmouseover) inputin te shfaqe nje alert qe te udhezoje userin 
+        //qe te vendose nje numer pozitiv
+
+        //Task Kur inputi eshte negativ krijoni nje paragraf te kuq qe njofton 
+        //nje error qe mosha duhet te jete pozitive
+        function ShowAgeErrorMessage()
+        {
+            debugger;
+            //Step 1
+            //Inputit shtoji/modifiko eventin on onchange
+            //Step 2
+            //Merr vleren nga inputi
+            //Step 3
+            //Kontrollo vleren
+            //Nqs vlera eshte me e vogel se zero krijo mesazh
+            //Nqs jo atehere : nqs mesazhi egziston atehere fshije mesazhin egzistues,
+            //Dhe shfaq nje mesazh Mosha u fut me sukses
+
+            //Krijimi mesazhit
+            //Krijo nje child paragraph
+            //Jepi ID
+            //Krijoje (document.body.appendChild(child))
+            //Jepi innerText Error message
+            //Jepi ngjyre te kuqe
+            //Kontrollo vleren
+            if (document.getElementById("id-input-1").value < 0)
+            {
+                
+                let okMessage = document.getElementById("id-errorMsg");
+                //Nqs egiziston mesazhi pozitiv dhe nummri eshte negativ fshi mesazhin pozitiv
+                if (okMessage != null )
+                {
+                    document.getElementById("id-OkMsg").innerText = " ";
+                    document.getElementById("id-OkMsg").style.display = "none";
+                }
+                //Shto mesazh negativ
+                let paragrafErrorMessageChild = document.createElement("p");
+                paragrafErrorMessageChild.setAttribute("id", "id-errorMsg");
+                document.body.appendChild(paragrafErrorMessageChild);
+                document.getElementById("id-errorMsg").style.display = "block";
+                document.getElementById("id-errorMsg").innerText = "Age cannot be negative";
+                document.getElementById("id-errorMsg").style.color = "red";
+            }
+            else{
+                //Shto mesash pozitiv
+                let paragrafOkMessageChild = document.createElement("p");
+                paragrafOkMessageChild.setAttribute("id", "id-OkMsg");
+                document.body.appendChild(paragrafOkMessageChild);
+                document.getElementById("id-OkMsg").innerText = "Age is inserted with success";
+                document.getElementById("id-OkMsg").style.color = "green";
+                document.getElementById("id-OkMsg").style.display = "block";
+
+                let errorMessage = document.getElementById("id-errorMsg");
+                //Nqs egiziston mesazhi negativ dhe nummri eshte pozitiv fshi mesazhin negativ
+                if (errorMessage != null )
+                {
+                    document.getElementById("id-errorMsg").innerText = " ";
+                    document.getElementById("id-errorMsg").style.display = "none";
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
